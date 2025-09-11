@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FloatChat Ocean Data Platform Design System */
+
+@layer base {
+  :root {
+    /* Ocean Theme - Light Mode */
+    --background: 210 30% 98%;
+    --foreground: 210 15% 15%;
+
+    /* Card backgrounds with subtle ocean tint */
+    --card: 210 25% 99%;
+    --card-foreground: 210 15% 15%;
+
+    --popover: 210 25% 99%;
+    --popover-foreground: 210 15% 15%;
+
+    /* Ocean Blue Primary Palette */
+    --primary: 200 95% 45%;
+    --primary-foreground: 210 30% 98%;
+    --primary-light: 195 100% 65%;
+    --primary-dark: 205 90% 35%;
+
+    /* Deep Ocean Secondary */
+    --secondary: 210 20% 92%;
+    --secondary-foreground: 210 15% 25%;
+
+    /* Ocean Mist */
+    --muted: 205 15% 95%;
+    --muted-foreground: 210 10% 50%;
+
+    /* Teal Accent */
+    --accent: 175 85% 55%;
+    --accent-foreground: 210 30% 98%;
+
+    /* Coral Alert */
+    --destructive: 15 85% 60%;
+    --destructive-foreground: 210 30% 98%;
+
+    /* Subtle Ocean Borders */
+    --border: 210 20% 88%;
+    --input: 210 15% 90%;
+    --ring: 200 95% 45%;
+
+    --radius: 0.75rem;
+
+    /* Ocean Depth Gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(195 100% 85%), hsl(200 95% 45%), hsl(205 90% 25%));
+    --gradient-surface: linear-gradient(180deg, hsl(195 100% 95%), hsl(200 50% 90%));
+    --gradient-deep: linear-gradient(180deg, hsl(205 90% 35%), hsl(210 95% 15%));
+    --gradient-glow: radial-gradient(circle at center, hsl(195 100% 75% / 0.3), transparent 70%);
+
+    /* Scientific Data Colors */
+    --data-warm: 25 95% 65%;
+    --data-cool: 240 85% 65%;
+    --data-neutral: 210 10% 60%;
+
+    /* Shadows with ocean tint */
+    --shadow-ocean: 0 4px 20px hsl(200 50% 20% / 0.1);
+    --shadow-float: 0 8px 40px hsl(195 80% 40% / 0.15);
+    --shadow-deep: 0 12px 60px hsl(205 90% 30% / 0.2);
+
+    /* Animations */
+    --transition-ocean: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-wave: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .dark {
+    /* Dark Ocean Theme */
+    --background: 210 95% 8%;
+    --foreground: 210 30% 95%;
+
+    --card: 210 90% 10%;
+    --card-foreground: 210 30% 95%;
+
+    --popover: 210 90% 10%;
+    --popover-foreground: 210 30% 95%;
+
+    --primary: 195 100% 65%;
+    --primary-foreground: 210 95% 8%;
+    --primary-light: 195 100% 75%;
+    --primary-dark: 200 95% 35%;
+
+    --secondary: 210 50% 15%;
+    --secondary-foreground: 210 30% 90%;
+
+    --muted: 210 70% 12%;
+    --muted-foreground: 210 15% 70%;
+
+    --accent: 175 85% 55%;
+    --accent-foreground: 210 95% 8%;
+
+    --destructive: 15 85% 60%;
+    --destructive-foreground: 210 30% 95%;
+
+    --border: 210 50% 18%;
+    --input: 210 50% 15%;
+    --ring: 195 100% 65%;
+
+    /* Dark Ocean Gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(195 100% 25%), hsl(200 95% 15%), hsl(210 95% 8%));
+    --gradient-surface: linear-gradient(180deg, hsl(210 70% 12%), hsl(210 95% 8%));
+    --gradient-deep: linear-gradient(180deg, hsl(210 95% 8%), hsl(220 100% 5%));
+    --gradient-glow: radial-gradient(circle at center, hsl(195 100% 35% / 0.4), transparent 70%);
+
+    --shadow-ocean: 0 4px 20px hsl(210 100% 5% / 0.3);
+    --shadow-float: 0 8px 40px hsl(195 80% 10% / 0.4);
+    --shadow-deep: 0 12px 60px hsl(210 100% 5% / 0.5);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+  }
+}
+
+@layer components {
+  /* Ocean Wave Animation */
+  .ocean-wave {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ocean-wave::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: var(--gradient-glow);
+    animation: wave 3s ease-in-out infinite;
+  }
+
+  @keyframes wave {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    50% { transform: translateX(50%) rotate(1deg); }
+  }
+
+  /* Float Animation */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+  }
+
+  /* Ocean Gradient Backgrounds */
+  .bg-ocean-gradient { background: var(--gradient-ocean); }
+  .bg-surface-gradient { background: var(--gradient-surface); }
+  .bg-deep-gradient { background: var(--gradient-deep); }
+
+  /* Ocean Shadows */
+  .shadow-ocean { box-shadow: var(--shadow-ocean); }
+  .shadow-float { box-shadow: var(--shadow-float); }
+  .shadow-deep { box-shadow: var(--shadow-deep); }
+
+  /* Data Visualization Colors */
+  .text-data-warm { color: hsl(var(--data-warm)); }
+  .text-data-cool { color: hsl(var(--data-cool)); }
+  .text-data-neutral { color: hsl(var(--data-neutral)); }
+
+  .bg-data-warm { background-color: hsl(var(--data-warm)); }
+  .bg-data-cool { background-color: hsl(var(--data-cool)); }
+  .bg-data-neutral { background-color: hsl(var(--data-neutral)); }
+
+  /* Transitions */
+  .transition-ocean { transition: var(--transition-ocean); }
+  .transition-wave { transition: var(--transition-wave); }
+}
