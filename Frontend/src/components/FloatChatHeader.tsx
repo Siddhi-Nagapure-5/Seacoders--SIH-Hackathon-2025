@@ -88,9 +88,16 @@ const FloatChatHeader = () => {
 
           {/* User Actions */}
           <div className="flex items-center space-x-3">
-            <Button variant="outline" size="sm">
-              <Settings className="h-4 w-4 mr-2" />
-              Settings
+            <Button 
+              asChild 
+              variant={isActive('/settings') ? "default" : "outline"} 
+              size="sm"
+              className={isActive('/settings') ? "bg-primary text-primary-foreground" : ""}
+            >
+              <Link to="/settings">
+                <Settings className="h-4 w-4 mr-2" />
+                Settings
+              </Link>
             </Button>
             
             {/* User Menu Dropdown */}
@@ -118,9 +125,11 @@ const FloatChatHeader = () => {
                   <User className="mr-2 h-4 w-4" />
                   <span>Profile</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Settings className="mr-2 h-4 w-4" />
-                  <span>Account Settings</span>
+                <DropdownMenuItem asChild>
+                  <Link to="/settings" className="flex items-center">
+                    <Settings className="mr-2 h-4 w-4" />
+                    <span>Account Settings</span>
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem className="text-destructive">
