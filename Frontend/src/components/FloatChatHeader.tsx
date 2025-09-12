@@ -29,7 +29,7 @@ const FloatChatHeader = () => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold bg-ocean-gradient bg-clip-text text-transparent">
-                  FloatChat
+                  AquaIntel
                 </h1>
                 <p className="text-xs text-muted-foreground">
                   AI-Powered Ocean Data Discovery

@@ -43,7 +43,7 @@ const Index = () => {
             </Badge>
             
             <h1 className="text-5xl lg:text-7xl font-bold mb-6 animate-fade-in-up">
-              FloatChat
+              AquaIntel
               <span className="block text-3xl lg:text-5xl text-accent font-normal mt-2">
                 AI-Powered Ocean Data Discovery
               </span>
