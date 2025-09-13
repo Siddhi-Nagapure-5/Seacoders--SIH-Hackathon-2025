@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-const FloatChatHeader = () => {
+const AquaIntelHeader = () => {
   const location = useLocation();
   
   const isActive = (path: string) => location.pathname === path;
@@ -125,11 +125,9 @@ const FloatChatHeader = () => {
                   <User className="mr-2 h-4 w-4" />
                   <span>Profile</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/settings" className="flex items-center">
-                    <Settings className="mr-2 h-4 w-4" />
-                    <span>Account Settings</span>
-                  </Link>
+                <DropdownMenuItem>
+                  <Settings className="mr-2 h-4 w-4" />
+                  <span>Account Settings</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem className="text-destructive">
@@ -145,4 +143,4 @@ const FloatChatHeader = () => {
   );
 };
 
-export default FloatChatHeader;
+export default AquaIntelHeader;

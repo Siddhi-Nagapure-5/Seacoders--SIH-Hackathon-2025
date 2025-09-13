@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -14,15 +15,25 @@ import {
   ArrowRight,
   Play
 } from 'lucide-react';
-import FloatChatHeader from '@/components/FloatChatHeader';
+import AquaIntelHeader from '@/components/AquaIntelHeader';
 import OceanDataVisualization from '@/components/OceanDataVisualization';
 import AIChat from '@/components/AIChat';
 import oceanHeroImage from '@/assets/ocean-hero.jpg';
 
 const Index = () => {
+  const navigate = useNavigate();
+
+  const handleStartChatting = () => {
+    navigate('/chat');
+  };
+
+  const handleExploreData = () => {
+    navigate('/chat');
+  };
+
   return (
     <div className="min-h-screen bg-background">
-      <FloatChatHeader />
+      <AquaIntelHeader />
       
       {/* Hero Section */}
       <section className="relative overflow-hidden">
@@ -55,7 +66,11 @@ const Index = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-              <Button size="lg" className="bg-primary hover:bg-primary-dark text-lg px-8 py-6">
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary-dark text-lg px-8 py-6"
+                onClick={handleStartChatting}
+              >
                 <MessageSquare className="h-5 w-5 mr-2" />
                 Start Chatting with AI
               </Button>
@@ -80,7 +95,7 @@ const Index = () => {
               Revolutionary Ocean Data Access
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              FloatChat transforms complex oceanographic data into accessible insights through AI-powered conversations
+              AquaIntel transforms complex oceanographic data into accessible insights through AI-powered conversations
             </p>
           </div>
           
@@ -211,10 +226,15 @@ const Index = () => {
             Ready to Explore Ocean Data?
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Start your journey with FloatChat and discover insights from the world's most comprehensive ocean monitoring network.
+            Start your journey with AquaIntel and discover insights from the world's most comprehensive ocean monitoring network.
           </p>
           
-          <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
+          <Button 
+            size="lg" 
+            variant="secondary" 
+            className="text-lg px-8 py-6"
+            onClick={handleExploreData}
+          >
             <Search className="h-5 w-5 mr-2" />
             Explore Data Now
             <ArrowRight className="h-5 w-5 ml-2" />
@@ -227,7 +247,7 @@ const Index = () => {
         <div className="container mx-auto px-6 text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <Waves className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold">FloatChat</span>
+            <span className="text-xl font-bold">AquaIntel</span>
           </div>
           <p className="text-muted-foreground mb-4">
             Ministry of Earth Sciences (MoES) • Indian National Centre for Ocean Information Services (INCOIS)

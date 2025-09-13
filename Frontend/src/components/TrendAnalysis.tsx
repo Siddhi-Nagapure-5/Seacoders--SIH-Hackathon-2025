@@ -379,3 +379,4 @@ const TrendAnalysis: React.FC = () => {
 };
 
 export default TrendAnalysis;
+
