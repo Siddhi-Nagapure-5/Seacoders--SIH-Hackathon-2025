@@ -49,7 +49,7 @@ const NotFound = () => {
             className="w-full"
           >
             <Home className="h-4 w-4 mr-2" />
-            Return to FloatChat
+            Return to AquaIntel
           </Button>
         </div>
       </div>

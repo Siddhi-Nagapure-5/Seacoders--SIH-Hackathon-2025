@@ -20,7 +20,7 @@ const AIChat = () => {
     {
       id: 1,
       type: 'bot',
-      content: "Hello! I'm FloatChat AI, your oceanographic data assistant. Ask me anything about ARGO float data, ocean temperatures, salinity levels, or data visualizations.",
+      content: "Hello! I'm AquaIntel AI, your oceanographic data assistant. Ask me anything about ARGO float data, ocean temperatures, salinity levels, or data visualizations.",
       timestamp: '10:30 AM'
     },
     {
@@ -89,7 +89,7 @@ const AIChat = () => {
             <MessageSquare className="h-5 w-5 text-primary" />
             <Sparkles className="h-3 w-3 text-accent absolute -top-1 -right-1 animate-pulse" />
           </div>
-          <span>FloatChat AI Assistant</span>
+          <span>AquaIntel AI Assistant</span>
           <Badge variant="outline" className="ml-auto">
             <Zap className="h-3 w-3 mr-1" />
             Live

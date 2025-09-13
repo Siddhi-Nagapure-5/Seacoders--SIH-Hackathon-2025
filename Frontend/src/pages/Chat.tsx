@@ -1,11 +1,11 @@
 import React from 'react';
-import FloatChatHeader from '@/components/FloatChatHeader';
+import AquaIntelHeader from '@/components/AquaIntelHeader';
 import AIChat from '@/components/AIChat';
 
 const Chat = () => {
   return (
     <div className="min-h-screen bg-background">
-      <FloatChatHeader />
+      <AquaIntelHeader />
       <main className="container mx-auto px-6 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">

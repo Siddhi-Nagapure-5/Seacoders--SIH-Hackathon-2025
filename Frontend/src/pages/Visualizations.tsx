@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FloatChatHeader from '@/components/FloatChatHeader';
+import AquaIntelHeader from '@/components/AquaIntelHeader';
 import OceanDataVisualization from '@/components/OceanDataVisualization';
 import India3DVisualization from '@/components/India3DVisualization';
 import Simple3DTest from '@/components/Simple3DTest';
@@ -15,7 +15,7 @@ const Visualizations = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <FloatChatHeader />
+      <AquaIntelHeader />
       <main className="container mx-auto px-6 py-8">
         <div className="mb-8">
           <h1 className="text-4xl font-bold bg-ocean-gradient bg-clip-text text-transparent mb-4">

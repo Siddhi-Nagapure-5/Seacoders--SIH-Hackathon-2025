@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import FloatChatHeader from '@/components/FloatChatHeader';
+import AquaIntelHeader from '@/components/AquaIntelHeader';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -152,7 +152,7 @@ const Analytics = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <FloatChatHeader />
+      <AquaIntelHeader />
       <main className="container mx-auto px-6 py-8">
         <div className="mb-8">
           <div className="flex items-center justify-between">
