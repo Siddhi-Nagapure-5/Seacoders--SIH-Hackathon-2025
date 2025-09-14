@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AquaIntelHeader from '@/components/AquaIntelHeader';
 import OceanDataVisualization from '@/components/OceanDataVisualization';
 import India3DVisualization from '@/components/India3DVisualization';
+import OceanLeafletMap from '@/components/OceanLeafletMap';
 import Simple3DTest from '@/components/Simple3DTest';
 import TemperatureProfiles from '@/components/TemperatureProfiles';
 import TrendAnalysis from '@/components/TrendAnalysis';
@@ -56,7 +57,7 @@ const Visualizations = () => {
             onClick={() => setActiveView('3d')}
           >
             <Globe className="h-4 w-4 mr-2" />
-            3D Ocean View
+            Ocean Map
           </Button>
         </div>
 
@@ -66,25 +67,16 @@ const Visualizations = () => {
             <Card className="bg-gradient-to-br from-blue-900/50 to-cyan-900/50 border-cyan-500/20">
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-white">3D India Ocean Visualization</CardTitle>
+                  <CardTitle className="text-white">Interactive Ocean Map</CardTitle>
                   <div className="flex gap-2">
-                    <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-100">Interactive 3D</Badge>
+                    <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-100">Interactive Map</Badge>
                     <Badge variant="outline" className="border-cyan-400 text-cyan-300">Real-time Data</Badge>
+                    <Badge variant="outline" className="border-green-400 text-green-300">CTD Sensors</Badge>
                   </div>
                 </div>
               </CardHeader>
               <CardContent className="p-0">
-                <India3DVisualization />
-              </CardContent>
-            </Card>
-            
-            {/* Debug: Simple 3D Test */}
-            <Card className="mt-4 bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-gray-500/20">
-              <CardHeader>
-                <CardTitle className="text-white text-sm">3D Engine Test</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Simple3DTest />
+                <OceanLeafletMap />
               </CardContent>
             </Card>
           </div>
