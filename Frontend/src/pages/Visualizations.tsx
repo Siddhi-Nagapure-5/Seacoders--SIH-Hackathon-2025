@@ -27,17 +27,6 @@ const Visualizations = () => {
           <p className="text-xl text-muted-foreground mb-4">
             Explore real-time ocean data through interactive maps, detailed charts, and comprehensive monitoring systems
           </p>
-          {activeView === '3d' && (
-            <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-blue-500/30 rounded-lg p-4 mb-6">
-              <div className="flex items-center space-x-2">
-                <Globe className="h-5 w-5 text-blue-600" />
-                <span className="font-semibold text-blue-800 dark:text-blue-200">Interactive Ocean Map Active</span>
-              </div>
-              <p className="text-sm text-blue-700 dark:text-blue-300 mt-1">
-                🗺️ Click and drag to navigate • 📍 Click green/orange dots for CTD sensor data • 🌡️ View real-time temperature and salinity readings
-              </p>
-            </div>
-          )}
         </div>
 
         {/* Visualization Controls */}

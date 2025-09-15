@@ -6,18 +6,10 @@ import { Badge } from '@/components/ui/badge';
 import { 
   Waves, 
   MessageSquare, 
-  Database, 
-  BarChart3, 
   Zap,
-  Globe,
-  Brain,
-  Search,
-  ArrowRight,
-  Play
+  Globe
 } from 'lucide-react';
 import AquaIntelHeader from '@/components/AquaIntelHeader';
-import OceanDataVisualization from '@/components/OceanDataVisualization';
-import AIChat from '@/components/AIChat';
 import BGCSensorsAnimation from '@/components/BGCSensorsAnimation';
 import FloatingChatbot from '@/components/FloatingChatbot';
 import oceanHeroImage from '@/assets/ocean-hero.jpg';
@@ -94,57 +86,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Overview */}
-      <section className="py-16 bg-surface-gradient">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Revolutionary Ocean Data Access
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              AquaIntel transforms complex oceanographic data into accessible insights through AI-powered conversations
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <Card className="bg-card border-0 shadow-ocean">
-              <CardContent className="p-6 text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-4">
-                  <Brain className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">AI-Powered RAG</h3>
-                <p className="text-muted-foreground">
-                  Advanced retrieval-augmented generation combines LLM intelligence with ARGO database knowledge
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-card border-0 shadow-ocean">
-              <CardContent className="p-6 text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-accent/10 rounded-lg mb-4">
-                  <Database className="h-6 w-6 text-accent" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Real-time Data</h3>
-                <p className="text-muted-foreground">
-                  Live access to temperature, salinity, and current data from thousands of ARGO floats worldwide
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-card border-0 shadow-ocean">
-              <CardContent className="p-6 text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-data-warm/10 rounded-lg mb-4">
-                  <BarChart3 className="h-6 w-6 text-data-warm" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Smart Visualization</h3>
-                <p className="text-muted-foreground">
-                  Interactive maps, graphs, and profiles automatically generated based on your queries
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+      
 
       {/* BGC Sensors Process Animation */}
       <section className="py-20 bg-gradient-to-b from-surface-gradient to-muted/30 relative overflow-hidden">
@@ -188,169 +130,13 @@ const Index = () => {
           
           <BGCSensorsAnimation />
           
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="text-center p-6">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-500/10 rounded-lg mb-4">
-                <Waves className="h-6 w-6 text-blue-500" />
-              </div>
-              <h3 className="font-semibold mb-2">Autonomous Operation</h3>
-              <p className="text-sm text-muted-foreground">
-                Floats operate independently for 5-7 years, completing 10-day cycles
-              </p>
-            </Card>
-            
-            <Card className="text-center p-6">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-green-500/10 rounded-lg mb-4">
-                <Database className="h-6 w-6 text-green-500" />
-              </div>
-              <h3 className="font-semibold mb-2">Multi-Parameter Sensing</h3>
-              <p className="text-sm text-muted-foreground">
-                Measures temperature, salinity, oxygen, pH, chlorophyll, and more
-              </p>
-            </Card>
-            
-            <Card className="text-center p-6">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-500/10 rounded-lg mb-4">
-                <Globe className="h-6 w-6 text-orange-500" />
-              </div>
-              <h3 className="font-semibold mb-2">Global Coverage</h3>
-              <p className="text-sm text-muted-foreground">
-                3,800+ floats worldwide providing unprecedented ocean observations
-              </p>
-            </Card>
-          </div>
           
-          {/* CTA for BGC Section */}
-          <div className="mt-16 text-center">
-            <Button 
-              size="lg" 
-              onClick={handleGetStarted}
-              className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white text-lg px-12 py-6 shadow-xl"
-            >
-              <Globe className="h-5 w-5 mr-2" />
-              Explore Interactive Ocean Data
-              <ArrowRight className="h-5 w-5 ml-2" />
-            </Button>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Click to access real-time ocean visualizations and interactive maps
-            </p>
-          </div>
+          
+          
         </div>
       </section>
 
-      {/* Main Dashboard */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Live Ocean Data Dashboard
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Real-time visualization and AI-powered analysis of global oceanographic data
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-            {/* Data Visualizations - Takes 2 columns */}
-            <div className="xl:col-span-2">
-              <OceanDataVisualization />
-            </div>
-            
-            {/* AI Chat Interface - Takes 1 column */}
-            <div className="xl:col-span-1">
-              <AIChat />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Architecture Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Intelligent Architecture
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Built for researchers, policy makers, and the public with cutting-edge AI technology
-            </p>
-          </div>
-          
-          <div className="max-w-4xl mx-auto">
-            <Card className="bg-surface-gradient border-0 shadow-deep">
-              <CardContent className="p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  <div className="text-center">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
-                      <MessageSquare className="h-8 w-8 text-primary" />
-                    </div>
-                    <h3 className="font-semibold mb-2">Chat Interface</h3>
-                    <p className="text-sm text-muted-foreground">Natural language queries</p>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 rounded-full mb-4">
-                      <Brain className="h-8 w-8 text-accent" />
-                    </div>
-                    <h3 className="font-semibold mb-2">LLM + RAG</h3>
-                    <p className="text-sm text-muted-foreground">AI understanding & retrieval</p>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-data-cool/10 rounded-full mb-4">
-                      <Database className="h-8 w-8 text-data-cool" />
-                    </div>
-                    <h3 className="font-semibold mb-2">Vector + SQL DB</h3>
-                    <p className="text-sm text-muted-foreground">Semantic & structured data</p>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-data-warm/10 rounded-full mb-4">
-                      <BarChart3 className="h-8 w-8 text-data-warm" />
-                    </div>
-                    <h3 className="font-semibold mb-2">Visualization</h3>
-                    <p className="text-sm text-muted-foreground">Interactive results</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-ocean-gradient text-white">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            Ready to Explore Ocean Data?
-          </h2>
-          <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Start your journey with AquaIntel and discover insights from the world's most comprehensive ocean monitoring network.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              variant="secondary" 
-              className="text-lg px-8 py-6 bg-white text-blue-900 hover:bg-white/90"
-              onClick={handleGetStarted}
-            >
-              <Globe className="h-5 w-5 mr-2" />
-              Get Started
-              <ArrowRight className="h-5 w-5 ml-2" />
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="text-lg px-8 py-6 border-white/30 text-white hover:bg-white/10"
-              onClick={handleExploreData}
-            >
-              <Search className="h-5 w-5 mr-2" />
-              Explore Data Now
-            </Button>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Footer */}
       <footer className="py-12 bg-card border-t">

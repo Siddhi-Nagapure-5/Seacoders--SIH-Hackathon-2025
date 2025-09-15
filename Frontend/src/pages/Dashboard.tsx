@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import AquaIntelHeader from '@/components/AquaIntelHeader';
+import OceanBackground from '@/components/OceanBackground';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -135,9 +136,10 @@ const Dashboard = () => {
   const animatedDataPoints = useAnimatedCounter(liveData.dataPoints);
   
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <OceanBackground />
       <AquaIntelHeader />
-      <main className="container mx-auto px-6 py-8">
+      <main className="container mx-auto px-6 py-8 relative z-10">
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
@@ -286,45 +288,7 @@ const Dashboard = () => {
             </CardContent>
           </Card>
 
-          {/* System Health */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center justify-between">
-                <span>System Health</span>
-                <CheckCircle className="h-5 w-5 text-green-500" />
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <div className="flex justify-between text-sm mb-2">
-                  <span>Data Processing</span>
-                  <span className="font-mono">{liveData.systemHealth.dataProcessing.toFixed(1)}%</span>
-                </div>
-                <Progress value={liveData.systemHealth.dataProcessing} className="h-2" />
-              </div>
-              <div>
-                <div className="flex justify-between text-sm mb-2">
-                  <span>Network Connectivity</span>
-                  <span className="font-mono">{liveData.systemHealth.networkConnectivity.toFixed(1)}%</span>
-                </div>
-                <Progress value={liveData.systemHealth.networkConnectivity} className="h-2" />
-              </div>
-              <div>
-                <div className="flex justify-between text-sm mb-2">
-                  <span>Storage Capacity</span>
-                  <span className="font-mono">{liveData.systemHealth.storageCapacity.toFixed(1)}%</span>
-                </div>
-                <Progress value={liveData.systemHealth.storageCapacity} className="h-2" />
-              </div>
-              <div>
-                <div className="flex justify-between text-sm mb-2">
-                  <span>API Uptime</span>
-                  <span className="font-mono">{liveData.systemHealth.apiUptime.toFixed(2)}%</span>
-                </div>
-                <Progress value={liveData.systemHealth.apiUptime} className="h-2" />
-              </div>
-            </CardContent>
-          </Card>
+          {/* System Health removed as requested */}
 
           {/* Recent Alerts & Notifications */}
           <Card>
