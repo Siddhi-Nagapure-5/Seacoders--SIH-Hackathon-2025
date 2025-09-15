@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,11 +11,19 @@ import {
   Sparkles, 
   Zap,
   Database,
-  BarChart3
+  BarChart3,
+  Mic,
+  MicOff,
+  Volume2,
+  AlertCircle
 } from 'lucide-react';
 
 const AIChat = () => {
   const [message, setMessage] = useState('');
+  const [isListening, setIsListening] = useState(false);
+  const [isSupported, setIsSupported] = useState(false);
+  const [voiceError, setVoiceError] = useState('');
+  const recognitionRef = useRef<any>(null);
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -37,6 +45,73 @@ const AIChat = () => {
       hasData: true
     }
   ]);
+
+  // Initialize speech recognition
+  useEffect(() => {
+    // Check if SpeechRecognition is supported
+    const SpeechRecognition = window.SpeechRecognition || (window as any).webkitSpeechRecognition;
+    
+    if (SpeechRecognition) {
+      setIsSupported(true);
+      const recognition = new SpeechRecognition();
+      
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = 'en-US';
+
+      recognition.onstart = () => {
+        setIsListening(true);
+        setVoiceError('');
+      };
+
+      recognition.onresult = (event: any) => {
+        const transcript = event.results[0][0].transcript;
+        setMessage(transcript);
+        setIsListening(false);
+      };
+
+      recognition.onerror = (event: any) => {
+        console.error('Speech recognition error:', event.error);
+        setIsListening(false);
+        setVoiceError(`Voice recognition error: ${event.error}`);
+      };
+
+      recognition.onend = () => {
+        setIsListening(false);
+      };
+
+      recognitionRef.current = recognition;
+    } else {
+      setIsSupported(false);
+      setVoiceError('Speech recognition not supported in this browser');
+    }
+
+    return () => {
+      if (recognitionRef.current) {
+        recognitionRef.current.abort();
+      }
+    };
+  }, []);
+
+  const startVoiceInput = () => {
+    if (!isSupported) {
+      setVoiceError('Speech recognition not supported');
+      return;
+    }
+
+    if (isListening) {
+      recognitionRef.current?.stop();
+      return;
+    }
+
+    setVoiceError('');
+    try {
+      recognitionRef.current?.start();
+    } catch (error) {
+      console.error('Failed to start voice recognition:', error);
+      setVoiceError('Failed to start voice recognition');
+    }
+  };
 
   const handleSendMessage = () => {
     if (!message.trim()) return;
@@ -90,10 +165,18 @@ const AIChat = () => {
             <Sparkles className="h-3 w-3 text-accent absolute -top-1 -right-1 animate-pulse" />
           </div>
           <span>AquaIntel AI Assistant</span>
-          <Badge variant="outline" className="ml-auto">
-            <Zap className="h-3 w-3 mr-1" />
-            Live
-          </Badge>
+          <div className="flex items-center space-x-2 ml-auto">
+            <Badge variant="outline">
+              <Zap className="h-3 w-3 mr-1" />
+              Live
+            </Badge>
+            {isSupported && (
+              <Badge variant="secondary">
+                <Mic className="h-3 w-3 mr-1" />
+                Voice
+              </Badge>
+            )}
+          </div>
         </CardTitle>
       </CardHeader>
 
@@ -157,23 +240,67 @@ const AIChat = () => {
           </div>
         </div>
 
+        {/* Voice Error Display */}
+        {voiceError && (
+          <div className="flex items-center space-x-2 p-2 bg-destructive/10 text-destructive rounded-md">
+            <AlertCircle className="h-4 w-4" />
+            <span className="text-sm">{voiceError}</span>
+          </div>
+        )}
+
+        {/* Voice Status */}
+        {isListening && (
+          <div className="flex items-center justify-center space-x-2 p-3 bg-primary/10 rounded-lg">
+            <div className="animate-pulse flex items-center space-x-2">
+              <Volume2 className="h-4 w-4 text-primary" />
+              <span className="text-sm text-primary font-medium">Listening... Speak now</span>
+              <div className="flex space-x-1">
+                <div className="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Chat Input */}
         <div className="flex space-x-2">
-          <Input
-            placeholder="Ask about ocean data, ARGO floats, or request visualizations..."
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-            className="flex-1"
-          />
+          <div className="flex-1 flex space-x-2">
+            <Input
+              placeholder={isListening ? "Listening for your voice..." : "Ask about ocean data, ARGO floats, or speak using the microphone..."}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+              className="flex-1"
+              disabled={isListening}
+            />
+            <Button 
+              onClick={startVoiceInput}
+              size="sm"
+              variant={isListening ? "destructive" : "outline"}
+              className={`${isListening ? 'animate-pulse' : ''} ${!isSupported ? 'opacity-50 cursor-not-allowed' : ''}`}
+              disabled={!isSupported}
+              title={isSupported ? (isListening ? "Stop listening" : "Start voice input") : "Voice input not supported"}
+            >
+              {isListening ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
+            </Button>
+          </div>
           <Button 
             onClick={handleSendMessage}
             size="sm"
             className="bg-primary hover:bg-primary-dark"
+            disabled={isListening}
           >
             <Send className="h-4 w-4" />
           </Button>
         </div>
+
+        {/* Voice Input Tips */}
+        {isSupported && (
+          <div className="text-xs text-muted-foreground text-center">
+            💡 Tip: Click the microphone button to speak your question, or type normally
+          </div>
+        )}
       </CardContent>
     </Card>
   );

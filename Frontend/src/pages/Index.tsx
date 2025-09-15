@@ -18,6 +18,8 @@ import {
 import AquaIntelHeader from '@/components/AquaIntelHeader';
 import OceanDataVisualization from '@/components/OceanDataVisualization';
 import AIChat from '@/components/AIChat';
+import BGCSensorsAnimation from '@/components/BGCSensorsAnimation';
+import FloatingChatbot from '@/components/FloatingChatbot';
 import oceanHeroImage from '@/assets/ocean-hero.jpg';
 
 const Index = () => {
@@ -29,6 +31,10 @@ const Index = () => {
 
   const handleExploreData = () => {
     navigate('/chat');
+  };
+
+  const handleGetStarted = () => {
+    navigate('/visualizations');
   };
 
   return (
@@ -78,9 +84,10 @@ const Index = () => {
                 variant="outline" 
                 size="lg" 
                 className="bg-white/10 border-white/30 text-white hover:bg-white/20 text-lg px-8 py-6"
+                onClick={handleGetStarted}
               >
-                <Play className="h-5 w-5 mr-2" />
-                Watch Demo
+                <Globe className="h-5 w-5 mr-2" />
+                Get Started
               </Button>
             </div>
           </div>
@@ -135,6 +142,98 @@ const Index = () => {
                 </p>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* BGC Sensors Process Animation */}
+      <section className="py-20 bg-gradient-to-b from-surface-gradient to-muted/30 relative overflow-hidden">
+        {/* Background Ocean Effects */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-blue-400 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-48 h-48 bg-cyan-400 rounded-full blur-3xl"></div>
+          <div className="absolute top-40 right-20 w-24 h-24 bg-teal-400 rounded-full blur-2xl"></div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-12">
+            <Badge variant="outline" className="mb-4 bg-blue-50 border-blue-200 text-blue-800">
+              <Waves className="h-3 w-3 mr-2" />
+              Live Ocean Technology
+            </Badge>
+            
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+              BGC Sensors in Action
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-8">
+              Watch the complete lifecycle of BGC-Argo floats as they collect biogeochemical data from the ocean depths. 
+              These autonomous sensors provide critical insights into ocean health and climate change.
+            </p>
+            
+            <div className="flex items-center justify-center space-x-6 mb-8">
+              <div className="flex items-center space-x-2 text-blue-600">
+                <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium">Live Animation</span>
+              </div>
+              <div className="flex items-center space-x-2 text-green-600">
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium">Real-time Data</span>
+              </div>
+              <div className="flex items-center space-x-2 text-purple-600">
+                <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium">Interactive Controls</span>
+              </div>
+            </div>
+          </div>
+          
+          <BGCSensorsAnimation />
+          
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="text-center p-6">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-500/10 rounded-lg mb-4">
+                <Waves className="h-6 w-6 text-blue-500" />
+              </div>
+              <h3 className="font-semibold mb-2">Autonomous Operation</h3>
+              <p className="text-sm text-muted-foreground">
+                Floats operate independently for 5-7 years, completing 10-day cycles
+              </p>
+            </Card>
+            
+            <Card className="text-center p-6">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-green-500/10 rounded-lg mb-4">
+                <Database className="h-6 w-6 text-green-500" />
+              </div>
+              <h3 className="font-semibold mb-2">Multi-Parameter Sensing</h3>
+              <p className="text-sm text-muted-foreground">
+                Measures temperature, salinity, oxygen, pH, chlorophyll, and more
+              </p>
+            </Card>
+            
+            <Card className="text-center p-6">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-500/10 rounded-lg mb-4">
+                <Globe className="h-6 w-6 text-orange-500" />
+              </div>
+              <h3 className="font-semibold mb-2">Global Coverage</h3>
+              <p className="text-sm text-muted-foreground">
+                3,800+ floats worldwide providing unprecedented ocean observations
+              </p>
+            </Card>
+          </div>
+          
+          {/* CTA for BGC Section */}
+          <div className="mt-16 text-center">
+            <Button 
+              size="lg" 
+              onClick={handleGetStarted}
+              className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white text-lg px-12 py-6 shadow-xl"
+            >
+              <Globe className="h-5 w-5 mr-2" />
+              Explore Interactive Ocean Data
+              <ArrowRight className="h-5 w-5 ml-2" />
+            </Button>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Click to access real-time ocean visualizations and interactive maps
+            </p>
           </div>
         </div>
       </section>
@@ -229,16 +328,27 @@ const Index = () => {
             Start your journey with AquaIntel and discover insights from the world's most comprehensive ocean monitoring network.
           </p>
           
-          <Button 
-            size="lg" 
-            variant="secondary" 
-            className="text-lg px-8 py-6"
-            onClick={handleExploreData}
-          >
-            <Search className="h-5 w-5 mr-2" />
-            Explore Data Now
-            <ArrowRight className="h-5 w-5 ml-2" />
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              size="lg" 
+              variant="secondary" 
+              className="text-lg px-8 py-6 bg-white text-blue-900 hover:bg-white/90"
+              onClick={handleGetStarted}
+            >
+              <Globe className="h-5 w-5 mr-2" />
+              Get Started
+              <ArrowRight className="h-5 w-5 ml-2" />
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="text-lg px-8 py-6 border-white/30 text-white hover:bg-white/10"
+              onClick={handleExploreData}
+            >
+              <Search className="h-5 w-5 mr-2" />
+              Explore Data Now
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -257,6 +367,9 @@ const Index = () => {
           </p>
         </div>
       </footer>
+
+      {/* Floating Chatbot */}
+      <FloatingChatbot />
     </div>
   );
 };
