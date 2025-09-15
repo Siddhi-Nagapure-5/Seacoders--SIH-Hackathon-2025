@@ -22,7 +22,7 @@ const AquaIntelHeader = () => {
         <div className="flex items-center justify-between">
           {/* Logo and Brand */}
           <div className="flex items-center space-x-4">
-            <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity cursor-pointer">
+            <div className="flex items-center space-x-2">
               <div className="relative">
                 <Waves className="h-8 w-8 text-primary animate-wave" />
                 <div className="absolute -top-1 -right-1 h-3 w-3 bg-accent rounded-full animate-pulse-slow"></div>
@@ -35,7 +35,7 @@ const AquaIntelHeader = () => {
                   AI-Powered Ocean Data Discovery
                 </p>
               </div>
-            </Link>
+            </div>
           </div>
 
           {/* Navigation */}

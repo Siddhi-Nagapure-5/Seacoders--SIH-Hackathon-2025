@@ -6,36 +6,57 @@ import OceanLeafletMap from '@/components/OceanLeafletMap';
 import Simple3DTest from '@/components/Simple3DTest';
 import TemperatureProfiles from '@/components/TemperatureProfiles';
 import TrendAnalysis from '@/components/TrendAnalysis';
+import OceanBackground from '@/components/OceanBackground';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Map, BarChart3, TrendingUp, Globe } from 'lucide-react';
 
 const Visualizations = () => {
-  const [activeView, setActiveView] = useState<'global' | 'profiles' | 'trends' | '3d'>('global');
+  const [activeView, setActiveView] = useState<'global' | 'profiles' | 'trends' | '3d'>('3d');
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <OceanBackground />
       <AquaIntelHeader />
-      <main className="container mx-auto px-6 py-8">
+      <main className="container mx-auto px-6 py-8 relative z-10">
         <div className="mb-8">
           <h1 className="text-4xl font-bold bg-ocean-gradient bg-clip-text text-transparent mb-4">
-            Ocean Data Visualizations
+            Interactive Ocean Data Visualizations
           </h1>
-          <p className="text-xl text-muted-foreground">
-            Interactive maps, charts, and real-time ocean monitoring
+          <p className="text-xl text-muted-foreground mb-4">
+            Explore real-time ocean data through interactive maps, detailed charts, and comprehensive monitoring systems
           </p>
+          {activeView === '3d' && (
+            <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-blue-500/30 rounded-lg p-4 mb-6">
+              <div className="flex items-center space-x-2">
+                <Globe className="h-5 w-5 text-blue-600" />
+                <span className="font-semibold text-blue-800 dark:text-blue-200">Interactive Ocean Map Active</span>
+              </div>
+              <p className="text-sm text-blue-700 dark:text-blue-300 mt-1">
+                🗺️ Click and drag to navigate • 📍 Click green/orange dots for CTD sensor data • 🌡️ View real-time temperature and salinity readings
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Visualization Controls */}
         <div className="flex flex-wrap gap-4 mb-8">
+          <Button 
+            variant={activeView === '3d' ? 'default' : 'outline'}
+            className={activeView === '3d' ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white' : ''}
+            onClick={() => setActiveView('3d')}
+          >
+            <Globe className="h-4 w-4 mr-2" />
+            Interactive Ocean Map
+          </Button>
           <Button 
             variant={activeView === 'global' ? 'default' : 'outline'} 
             className={activeView === 'global' ? 'bg-primary' : ''}
             onClick={() => setActiveView('global')}
           >
             <Map className="h-4 w-4 mr-2" />
-            Global Map
+            ARGO Float Network
           </Button>
           <Button 
             variant={activeView === 'profiles' ? 'default' : 'outline'}
@@ -51,27 +72,24 @@ const Visualizations = () => {
             <TrendingUp className="h-4 w-4 mr-2" />
             Trend Analysis
           </Button>
-          <Button 
-            variant={activeView === '3d' ? 'default' : 'outline'}
-            className={activeView === '3d' ? 'bg-gradient-to-r from-blue-500 to-cyan-500' : ''}
-            onClick={() => setActiveView('3d')}
-          >
-            <Globe className="h-4 w-4 mr-2" />
-            Ocean Map
-          </Button>
         </div>
 
-        {/* Main Visualization */}
+        {/* Main Visualization - Ocean Map */}
         {activeView === '3d' ? (
           <div className="mb-8">
-            <Card className="bg-gradient-to-br from-blue-900/50 to-cyan-900/50 border-cyan-500/20">
+            <Card className="bg-gradient-to-br from-blue-900/60 to-cyan-900/60 backdrop-blur-md border-cyan-500/30 shadow-2xl">
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-white">Interactive Ocean Map</CardTitle>
+                  <div className="space-y-2">
+                    <CardTitle className="text-white text-2xl">Interactive Ocean Map</CardTitle>
+                    <p className="text-cyan-100/80 text-sm">
+                      Click on CTD sensors to view real-time data • Explore ocean currents and temperature zones
+                    </p>
+                  </div>
                   <div className="flex gap-2">
-                    <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-100">Interactive Map</Badge>
-                    <Badge variant="outline" className="border-cyan-400 text-cyan-300">Real-time Data</Badge>
-                    <Badge variant="outline" className="border-green-400 text-green-300">CTD Sensors</Badge>
+                    <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-100">🗺️ Interactive Map</Badge>
+                    <Badge variant="outline" className="border-cyan-400 text-cyan-300">📡 Real-time Data</Badge>
+                    <Badge variant="outline" className="border-green-400 text-green-300">🌡️ CTD Sensors</Badge>
                   </div>
                 </div>
               </CardHeader>
@@ -83,7 +101,7 @@ const Visualizations = () => {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             <div className="lg:col-span-3">
-              <Card>
+              <Card className="backdrop-blur-md bg-card/80">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle>
@@ -106,7 +124,7 @@ const Visualizations = () => {
             </div>
 
             <div className="space-y-6">
-              <Card>
+              <Card className="backdrop-blur-md bg-card/80">
                 <CardHeader>
                   <CardTitle className="text-sm">Temperature Range</CardTitle>
                 </CardHeader>
@@ -128,7 +146,7 @@ const Visualizations = () => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="backdrop-blur-md bg-card/80">
                 <CardHeader>
                   <CardTitle className="text-sm">Salinity Levels</CardTitle>
                 </CardHeader>
@@ -150,7 +168,7 @@ const Visualizations = () => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="backdrop-blur-md bg-card/80">
                 <CardHeader>
                   <CardTitle className="text-sm">Active Regions</CardTitle>
                 </CardHeader>
