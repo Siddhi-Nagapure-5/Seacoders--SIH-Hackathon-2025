@@ -27,7 +27,7 @@ interface AnimationPhase {
 }
 
 const BGCSensorsAnimation: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [currentPhase, setCurrentPhase] = useState(0);
   const [progress, setProgress] = useState(0);
   const [floatDepth, setFloatDepth] = useState(0);
@@ -102,6 +102,20 @@ const BGCSensorsAnimation: React.FC = () => {
     
     return () => clearInterval(interval);
   }, [isPlaying, totalDuration]);
+
+  // Auto-loop when finished
+  useEffect(() => {
+    if (!isPlaying && progress === 100) {
+      const timeout = setTimeout(() => {
+        setProgress(0);
+        setCurrentPhase(0);
+        setFloatDepth(0);
+        setCollectedData({ temperature: 0, salinity: 0, oxygen: 0, chlorophyll: 0, ph: 0 });
+        setIsPlaying(true);
+      }, 800);
+      return () => clearTimeout(timeout);
+    }
+  }, [isPlaying, progress]);
 
   const handlePlayPause = () => {
     setIsPlaying(!isPlaying);

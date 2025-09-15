@@ -2,14 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
 import { 
   MessageSquare, 
   Send, 
   Bot, 
   User, 
   Sparkles, 
-  Zap,
   Database,
   BarChart3,
   Mic,
@@ -165,18 +163,6 @@ const AIChat = () => {
             <Sparkles className="h-3 w-3 text-accent absolute -top-1 -right-1 animate-pulse" />
           </div>
           <span>AquaIntel AI Assistant</span>
-          <div className="flex items-center space-x-2 ml-auto">
-            <Badge variant="outline">
-              <Zap className="h-3 w-3 mr-1" />
-              Live
-            </Badge>
-            {isSupported && (
-              <Badge variant="secondary">
-                <Mic className="h-3 w-3 mr-1" />
-                Voice
-              </Badge>
-            )}
-          </div>
         </CardTitle>
       </CardHeader>
 
