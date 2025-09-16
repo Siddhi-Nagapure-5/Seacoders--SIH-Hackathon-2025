@@ -1,5 +1,5 @@
-import React from 'react';
-import { MessageSquare, Waves, Search, Settings, User, BarChart3, TrendingUp, ChevronDown, LogIn, UserPlus, LogOut } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { MessageSquare, Waves, Search, Settings, User, BarChart3, TrendingUp, ChevronDown, LogIn, UserPlus, LogOut, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
 import {
@@ -13,6 +13,22 @@ import {
 
 const AquaIntelHeader = () => {
   const location = useLocation();
+  const [isDark, setIsDark] = useState<boolean>(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const dark = saved ? saved === 'dark' : prefersDark;
+    setIsDark(dark);
+    document.documentElement.classList.toggle('dark', dark);
+  }, []);
+
+  const toggleTheme = () => {
+    const next = !isDark;
+    setIsDark(next);
+    document.documentElement.classList.toggle('dark', next);
+    localStorage.setItem('theme', next ? 'dark' : 'light');
+  };
   
   const isActive = (path: string) => location.pathname === path;
   
@@ -88,6 +104,10 @@ const AquaIntelHeader = () => {
 
           {/* User Actions */}
           <div className="flex items-center space-x-3">
+            {/* Theme toggle */}
+            <Button variant="ghost" size="icon" aria-label="Toggle theme" onClick={toggleTheme} className="rounded-full">
+              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </Button>
             <Button 
               asChild 
               variant={isActive('/settings') ? "default" : "outline"} 

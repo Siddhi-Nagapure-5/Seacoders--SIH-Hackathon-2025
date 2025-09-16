@@ -2,16 +2,14 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { 
   Waves, 
   MessageSquare, 
-  Zap,
   Globe,
   TrendingUp
 } from 'lucide-react';
 import AquaIntelHeader from '@/components/AquaIntelHeader';
-import BGCSensorsAnimation from '@/components/BGCSensorsAnimation';
+import OceanEffects from '@/components/OceanEffects';
 import FloatingChatbot from '@/components/FloatingChatbot';
 import oceanHeroImage from '@/assets/ocean-hero.jpg';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -36,7 +34,8 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <OceanEffects />
       <AquaIntelHeader />
       
       {/* Hero Section */}
@@ -69,7 +68,7 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               <Button 
                 size="xl" 
-                className="bg-primary hover:bg-primary-dark text-lg"
+                className="bg-primary hover:bg-primary-dark text-lg btn-biolume"
                 onClick={handleStartChatting}
               >
                 <MessageSquare className="h-5 w-5 mr-2" />
@@ -78,7 +77,7 @@ const Index = () => {
               <Button 
                 variant="outline" 
                 size="xl" 
-                className="bg-white/10 border-white/30 text-white hover:bg-white/20 text-lg"
+                className="bg-white/10 border-white/30 text-white hover:bg-white/20 text-lg btn-biolume"
                 onClick={handleGetStarted}
               >
                 <Globe className="h-5 w-5 mr-2" />
@@ -100,24 +99,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* BGC‑Argo Float Operation Cycle Video */}
-      <section className="py-16 bg-gradient-to-b from-muted/30 to-background">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto text-center mb-6">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-3 bg-gradient-to-r from-cyan-600 to-blue-700 bg-clip-text text-transparent">
-              BGC‑Argo Float Operation Cycle
-            </h2>
-            <p className="text-muted-foreground">Overview of the float’s cycle as it profiles and transmits data.</p>
-          </div>
-          <Card className="overflow-hidden shadow-float">
-            <CardContent className="p-0">
-              <AspectRatio ratio={16 / 9}>
-                <video src="/argo-cycle.mp4" controls className="w-full h-full object-cover" />
-              </AspectRatio>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      
 
       
 
@@ -158,11 +140,23 @@ const Index = () => {
             </div>
           </div>
           
-          <BGCSensorsAnimation />
-          
-          
-          
-          
+          {/* Interact: BGC‑Argo Float Video */}
+          <Card className="overflow-hidden shadow-float">
+            <CardContent className="p-0">
+              <AspectRatio ratio={16 / 9}>
+                <video 
+                  src="/argo-cycle.mp4" 
+                  className="w-full h-full object-contain bg-black"
+                  autoPlay 
+                  muted 
+                  loop 
+                  playsInline 
+                  controls
+                />
+              </AspectRatio>
+            </CardContent>
+          </Card>
+
         </div>
       </section>
 
