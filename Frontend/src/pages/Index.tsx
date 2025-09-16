@@ -46,10 +46,7 @@ const Index = () => {
         
         <div className="relative z-10 container mx-auto px-6 py-24">
           <div className="max-w-4xl mx-auto text-center text-white">
-            <Badge variant="outline" className="mb-6 bg-white/10 border-white/20 text-white">
-              <Zap className="h-3 w-3 mr-2" />
-              Powered by AI & RAG Technology
-            </Badge>
+           
             
             <h1 className="text-5xl lg:text-7xl font-bold mb-6 animate-fade-in-up">
               AquaIntel
@@ -99,10 +96,7 @@ const Index = () => {
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
-            <Badge variant="outline" className="mb-4 bg-blue-50 border-blue-200 text-blue-800">
-              <Waves className="h-3 w-3 mr-2" />
-              Live Ocean Technology
-            </Badge>
+           
             
             <h2 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
               BGC Sensors in Action
