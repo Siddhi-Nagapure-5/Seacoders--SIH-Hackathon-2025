@@ -17,11 +17,10 @@ const Visualizations = () => {
 
   return (
     <div className="min-h-screen bg-background relative">
-      <OceanBackground />
       <AquaIntelHeader />
       <main className="container mx-auto px-6 py-8 relative z-10">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold bg-ocean-gradient bg-clip-text text-transparent mb-4">
+          <h1 className="text-4xl font-bold text-blue-900 dark:text-blue-200 mb-4">
             Interactive Ocean Data Visualizations
           </h1>
           <p className="text-xl text-muted-foreground mb-4">
@@ -66,7 +65,7 @@ const Visualizations = () => {
         {/* Main Visualization - Ocean Map */}
         {activeView === '3d' ? (
           <div className="mb-8">
-            <Card className="bg-gradient-to-br from-blue-900/60 to-cyan-900/60 backdrop-blur-md border-cyan-500/30 shadow-2xl">
+            <Card className="bg-gradient-to-br from-blue-800/80 to-slate-900/80 dark:from-blue-900/70 dark:to-cyan-950/70 backdrop-blur-md border-cyan-400/30 dark:border-cyan-300/25 shadow-2xl">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div className="space-y-2">
@@ -76,9 +75,9 @@ const Visualizations = () => {
                     </p>
                   </div>
                   <div className="flex gap-2">
-                    <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-100">🗺️ Interactive Map</Badge>
-                    <Badge variant="outline" className="border-cyan-400 text-cyan-300">📡 Real-time Data</Badge>
-                    <Badge variant="outline" className="border-green-400 text-green-300">🌡️ CTD Sensors</Badge>
+                    <Badge variant="secondary" className="bg-cyan-400/20 text-cyan-100 border border-cyan-300/30">🗺️ Interactive Map</Badge>
+                    <Badge variant="outline" className="border-cyan-300/40 text-cyan-200">📡 Real-time Data</Badge>
+                    <Badge variant="outline" className="border-green-300/40 text-green-200">🌡️ CTD Sensors</Badge>
                   </div>
                 </div>
               </CardHeader>

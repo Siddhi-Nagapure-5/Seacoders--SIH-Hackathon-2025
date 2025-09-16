@@ -143,7 +143,7 @@ const Dashboard = () => {
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl font-bold bg-ocean-gradient bg-clip-text text-transparent mb-4">
+              <h1 className="text-4xl font-bold text-blue-900 dark:text-blue-200 mb-4">
                 Ocean Data Dashboard
               </h1>
               <p className="text-xl text-muted-foreground">

@@ -20,7 +20,7 @@ const NotFound = () => {
           <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 rounded-full mb-6">
             <Waves className="h-10 w-10 text-primary animate-wave" />
           </div>
-          <h1 className="text-6xl font-bold mb-4 bg-ocean-gradient bg-clip-text text-transparent">
+          <h1 className="text-6xl font-bold mb-4 text-blue-900 dark:text-blue-200">
             404
           </h1>
           <h2 className="text-2xl font-semibold mb-2 text-foreground">
