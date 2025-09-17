@@ -13,6 +13,7 @@ import OceanEffects from '@/components/OceanEffects';
 import FloatingChatbot from '@/components/FloatingChatbot';
 import oceanHeroImage from '@/assets/ocean-hero.jpg';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import BGCSensorsAnimation from '@/components/BGCSensorsAnimation';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -140,8 +141,11 @@ const Index = () => {
             </div>
           </div>
           
+          {/* BGC-Argo Float Animation */}
+          <BGCSensorsAnimation />
+
           {/* Interact: BGC‑Argo Float Video */}
-          <Card className="overflow-hidden shadow-float">
+          <Card className="overflow-hidden shadow-float mt-8">
             <CardContent className="p-0">
               <AspectRatio ratio={16 / 9}>
                 <video 
